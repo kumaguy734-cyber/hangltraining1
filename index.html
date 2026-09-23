@@ -1,1 +1,56 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0f172a"><title>韓国の友達と話せる韓国語</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+<header class="topbar"><div><div class="eyebrow">KOREAN FRIENDS • DAILY CONVERSATION</div>
+<h1>韓国の友達と話せる韓国語</h1><p class="sub">単語を覚えるだけでなく、「聞く・読む・打つ・話す」を毎日少しずつ。</p></div>
+<div class="top-actions"><button id="speakTest" class="icon-btn">🔊</button><button id="resetProgress" class="ghost-btn">進捗リセット</button></div></header>
 
+<section class="dashboard">
+<div class="dash-card goal"><div class="dash-label">韓国の友達と話せる度</div><div class="big-number" id="conversationPct">0%</div><div class="progress"><span id="conversationBar"></span></div><small id="conversationHint">まずは今日の5問から。</small></div>
+<div class="dash-card"><div class="dash-label">連続学習</div><div class="big-number"><span id="streak">0</span><small> 日</small></div><small>今日学習すると更新</small></div>
+<div class="dash-card"><div class="dash-label">累計正解</div><div class="big-number" id="correctCount">0</div><small id="reviewDue">復習 0件</small></div>
+</section>
+
+<nav class="tabs">
+<button class="tab active" data-view="home">ホーム</button><button class="tab" data-view="study">カード学習</button><button class="tab" data-view="quiz">クイズ</button><button class="tab" data-view="chat">チャット</button><button class="tab" data-view="review">弱点・復習</button><button class="tab" data-view="library">教材一覧</button>
+</nav>
+
+<main>
+<section id="view-home" class="view active">
+<div class="section-title"><div><h2>今日の学習ロードマップ</h2><p>目標は「韓国の友達との簡単な日常会話を継続できること」です。</p></div><button class="primary" data-go="study">▶ 今日の5問</button></div>
+<div class="roadmap">
+<button class="road-card" data-go="library" data-filter="hangul"><span>STEP 1</span><b>ハングル・発音</b><small>母音・子音・音のルール</small></button>
+<button class="road-card" data-go="study" data-filter="beginner"><span>STEP 2</span><b>初級語彙・文法</b><small>1,671語 + 85文法</small></button>
+<button class="road-card" data-go="study" data-filter="intermediate"><span>STEP 3</span><b>中級会話</b><small>2,662語 + 148文法</small></button>
+<button class="road-card" data-go="chat"><span>STEP 4</span><b>SNS・リアル会話</b><small>チャット用語・流行語・返信</small></button>
+</div>
+<div class="home-grid">
+<div class="panel"><h3>🎧 聞く・話す</h3><p>韓国語のカード、例文、チャットをブラウザ標準の音声合成で再生できます。0.8 / 1.0 / 1.2倍に対応。</p><div class="speed-row"><button class="speed" data-speed="0.8">0.8×</button><button class="speed active" data-speed="1">1.0×</button><button class="speed" data-speed="1.2">1.2×</button></div></div>
+<div class="panel"><h3>🔄 間隔反復</h3><p>正解すると翌日→3日後→7日後→14日後の順に復習間隔を伸ばします。間違えた項目は今日の復習対象へ。</p></div>
+<div class="panel"><h3>💬 友達チャット</h3><p>「ㅇㅇ」「ㅋㅋㅋ」「ㄱㄱ」など、SNSで見かける表現を会話の流れで練習します。</p></div>
+</div>
+<div class="panel source-note"><h3>収録教材</h3><div class="stats-list">
+<span>ハングル表</span><b>母音・子音</b><span>初級単語</span><b>1,671語</b><span>初級文法</span><b>85項目</b><span>中級単語</span><b>2,662項目</b><span>中級文法</span><b>148項目</b><span>人称代名詞</span><b>主要活用</b><span>チャット用語・流行語</span><b>約70項目</b><span>해요体</span><b>基本・変則</b>
+</div></div>
+</section>
+
+<section id="view-study" class="view"><div class="section-title"><div><h2>カード学習</h2><p id="studyMeta">初級単語からスタート</p></div><div class="filters"><select id="studyCategory"><option value="beginner">初級単語</option><option value="intermediate">中級単語</option><option value="beginnerGrammar">初級文法</option><option value="intermediateGrammar">中級文法</option><option value="chat">チャット用語</option><option value="trends">流行語</option></select><button id="studyRandom" class="ghost-btn">ランダム</button></div></div><div id="studyCard" class="study-card"></div></section>
+
+<section id="view-quiz" class="view"><div class="section-title"><div><h2>クイズ</h2><p>4択 → 正解を確認 → 音声で復習</p></div><select id="quizType"><option value="word">単語：韓国語→日本語</option><option value="wordReverse">単語：日本語→韓国語</option><option value="grammar">文法：意味→文法</option><option value="chat">SNS：用語→意味</option></select></div><div id="quizBox" class="quiz-box"></div></section>
+
+<section id="view-chat" class="view"><div class="section-title"><div><h2>💬 友達チャットシミュレーション</h2><p>LINE / KakaoTalkを想定した短いやり取り</p></div><button id="newChat" class="primary">新しい会話</button></div><div class="chat-layout"><div id="chatWindow" class="chat-window"></div><div class="chat-tools"><h3>返信候補</h3><div id="replyOptions"></div><div class="typing"><input id="chatInput" placeholder="韓国語で返信してみる（任意）"><button id="voiceInput" class="ghost-btn" title="韓国語音声入力">🎤</button><button id="sendChat" class="primary">送信</button></div><div id="chatFeedback" class="feedback"></div></div></div></section>
+
+<section id="view-review" class="view"><div class="section-title"><div><h2>弱点・復習</h2><p>間違えた項目と、今日が復習日の項目を優先表示</p></div><button id="reviewQuiz" class="primary">弱点テスト</button></div><div id="reviewList" class="review-list"></div></section>
+
+<section id="view-library" class="view"><div class="section-title"><div><h2>教材ライブラリ</h2><p>収録データを検索・閲覧できます。</p></div><input id="librarySearch" class="search" placeholder="韓国語・日本語・文法を検索"></div>
+<div class="library-tabs"><button class="lib-tab active" data-lib="hangul">ハングル</button><button class="lib-tab" data-lib="pronouns">人称代名詞</button><button class="lib-tab" data-lib="haeyo">해요体</button><button class="lib-tab" data-lib="chat">チャット</button><button class="lib-tab" data-lib="trends">流行語</button><button class="lib-tab" data-lib="beginnerGrammar">初級文法</button><button class="lib-tab" data-lib="intermediateGrammar">中級文法</button><button class="lib-tab" data-lib="beginner">初級単語</button><button class="lib-tab" data-lib="intermediate">中級単語</button></div>
+<div id="libraryContent" class="library-content"></div></section>
+</main><footer>GitHub Pages対応・外部ライブラリ不要・学習データはブラウザのlocalStorageに保存</footer>
+</div><script src="script.js"></script>
+</body></html>
