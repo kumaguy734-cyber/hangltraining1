@@ -1,7 +1,7 @@
 /* Googleスプレッドシート記録（GAS連携）。script.js の後に読み込みます。 */
 (function () {
   "use strict";
-  const DEFAULT_GAS_URL = ""; // ← デプロイしたウェブアプリURLを入れておくと全端末で共通設定になります
+  const DEFAULT_GAS_URL = "https://script.google.com/macros/s/AKfycbwwbo3JAXNLjd8X6YgyvukTFj2aUkzms4cNkeYmTT52wnJb3nsuQUNWLmq_2h64DU8Ytw/exec"; // ← デプロイしたウェブアプリURLを入れておくと全端末で共通設定になります
   const CFG_KEY = "koreanFriendApp_sync_v1";
   const QUEUE_KEY = "koreanFriendApp_queue_v1";
 
